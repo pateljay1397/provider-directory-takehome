@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px 225px;
+  width: 100%;
+  margin: 0px 0px 5px 0px;
+  background-color: #fff;
+}
+.header h2 {
+  margin-bottom: 10px;
+}
+
+.header small {
+  margin-bottom: 10px;
+  color: #545d7a;
+}
+
+.location img {
+  margin-right: 5px;
+}
+
+.location {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  box-sizing: border-box;
+  border-radius: 94px;
+  width: fit-content;
+  padding: 5px 10px;
+}
+.usercount {
+  color: #3f4145;
+  padding: 5px 225px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.usercount span {
+  font-weight: bold;
+}

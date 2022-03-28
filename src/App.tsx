@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import indexRoutes from "./routes";
@@ -6,6 +7,7 @@ import { createHashHistory } from "history";
 function App() {
   const history = createHashHistory();
   return (
+    // @ts-ignore
     <Router history={history}>
       <Routes>
         {indexRoutes.map((route, key) => {

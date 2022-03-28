@@ -161,18 +161,6 @@ body {
 .topNavigation img {
   margin: 0 5px;
 }
-.headerp {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px 10px;
-  width: 100%;
-  /* margin: 0px 0px 5px 0px; */
-  background-color: #fff;
-}
-.headerp h2 {
-  margin-bottom: 5px 0;
-}
 .topnav-btn {
   font-weight: 400;
   font-size: 14px;

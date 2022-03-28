@@ -2,12 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Profile } from "../assests";
 import "./userlistingcard.css";
+import { userModel } from "../Model";
 
-const Userlistingcard = ({ user }) => {
+const Userlistingcard = (props: { user: userModel }) => {
   const navigate = useNavigate();
-  const handleUserProfile = (id) => {
+  const handleUserProfile = (id: string) => {
     navigate(`/${id}`);
   };
+  const { user } = props;
+
   return (
     <div className="container">
       <div onClick={() => handleUserProfile(user.id)}>

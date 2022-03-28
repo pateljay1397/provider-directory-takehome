@@ -1,19 +1,23 @@
 import React from "react";
-import { useEffect, useState } from "react/cjs/react.development";
-import { fetchProviders } from "../api.js";
-import { Vector } from "../assests/index.js";
+import { useEffect, useState } from "react";
+import { fetchProviders } from "../api";
+import { Vector } from "../assests";
 import "./userlisting.css";
-import Loader from "./Loader.js";
+import Loader from "./Loader";
 import Userlistingcard from "./Userlistingcard";
+import { userModel } from "../Model";
 
 const Userlisting = () => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState<[userModel]>();
 
   useEffect(() => {
+    //Fetching all the users data
     fetchProviders().then((data) => {
-      setUserData(data);
-    }, []);
-  });
+      if (data) {
+        setUserData(data as [userModel]);
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -27,13 +31,13 @@ const Userlisting = () => {
       </div>
       <div className="usercount">
         <small>
-          <span>{userData?.length}</span> providers in Ontario
+          <span>{userData && userData.length}</span> providers in Ontario
         </small>
       </div>
       {userData ? (
         <div>
-          {userData.map((user, key) => (
-            <Userlistingcard user={user} key={user.id} />
+          {userData.map((perUser: userModel) => (
+            <Userlistingcard user={perUser} key={perUser.id} />
           ))}
         </div>
       ) : (

@@ -1,6 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react/cjs/react.development";
-import { fetchProvider } from "../api.js";
+import { useEffect, useState } from "react";
+import { fetchProvider } from "../api";
 import "./userprofile.css";
 import { useParams } from "react-router-dom";
 import {
@@ -11,28 +11,26 @@ import {
   Forward,
   Profile,
 } from "../assests";
-import Loader from "./Loader.js";
+import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
+import { userModel } from "../Model";
 
 const Userprofile = () => {
-  const [userProfileData, setUserProfileData] = useState();
+  const [userProfileData, setUserProfileData] = useState<userModel>();
   const [showMore, setShowMore] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchProvider(id)
-      .then((data) => {
+    //Fetching data for selected user by userID
+    fetchProvider(id as string)
+      .then((data: any) => {
         setUserProfileData(data);
-        console.log(data);
       })
       .catch((ex) => console.error(ex));
   }, [id]);
   return (
     <>
-      <div className="headerp">
-        <h2>Provider profile</h2>
-      </div>
       {userProfileData ? (
         <div>
           <div className="topNavigation">
@@ -71,12 +69,12 @@ const Userprofile = () => {
                   >
                     {showMore ? (
                       <div>
-                        {"Show less"} <img src={Showless} alt="showless" />{" "}
+                        {"Show less"} <img src={Showless} alt="showless" />
                       </div>
                     ) : (
                       <div>
-                        {"Show more"}{" "}
-                        <img className="rotate" src={Showless} alt="showmore" />{" "}
+                        {"Show more"}
+                        <img className="rotate" src={Showless} alt="showmore" />
                       </div>
                     )}
                   </div>

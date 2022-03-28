@@ -1,9 +1,9 @@
 import React from "react";
-import { useEffect, useState } from "react/cjs/react.development";
-import { fetchProviders } from "../api.js";
-import { Vector } from "../assests/index.js";
+import { useEffect, useState } from "react";
+import { fetchProviders } from "../api";
+import { Vector } from "../assests";
 import "./userlisting.css";
-import Loader from "./Loader.js";
+import Loader from "./Loader";
 import Userlistingcard from "./Userlistingcard";
 
 const Userlisting = () => {
@@ -11,9 +11,11 @@ const Userlisting = () => {
 
   useEffect(() => {
     //Fetching all the users data
-    fetchProviders().then((data) => {
-      setUserData(data);
-    });
+    fetchProviders()
+      .then((data) => {
+        setUserData(data);
+      })
+      .catch((ex) => console.error(ex));
   }, []);
 
   return (

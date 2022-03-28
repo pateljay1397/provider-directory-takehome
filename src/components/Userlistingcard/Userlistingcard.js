@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Profile } from "../assests";
+import { Profile } from "../../assests";
 import "./userlistingcard.css";
 
 const Userlistingcard = ({ user }) => {

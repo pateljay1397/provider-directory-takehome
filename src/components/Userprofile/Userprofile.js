@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchProvider } from "../api";
+import { fetchProvider } from "../../api";
 import "./userprofile.css";
 import { useParams } from "react-router-dom";
 import {
@@ -10,8 +10,8 @@ import {
   Showless,
   Forward,
   Profile,
-} from "../assests";
-import Loader from "./Loader";
+} from "../../assests";
+import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -27,7 +27,9 @@ const Userprofile = () => {
       .then((data) => {
         setUserProfileData(data);
       })
-      .catch((ex) => console.error(ex));
+      .catch((error) =>
+        toast.error(error.message || error.response.data.message)
+      );
   }, [id]);
   return (
     <>

@@ -1,4 +1,4 @@
-import Userlistingcard from "./components/Userlistingcard";
+import Userlistingcard from "./components/Userlistingcard/Userlistingcard";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import { shallow, configure, mount } from "enzyme";
 import { Router } from "react-router";

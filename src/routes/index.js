@@ -1,5 +1,5 @@
-import Userlisting from "../components/Userlisting";
-import Userprofile from "../components/Userprofile";
+import Userlisting from "../components/Userlisting/Userlisting";
+import Userprofile from "../components/Userprofile/Userprofile";
 
 //Add all the application routes here
 const indexRoutes = [

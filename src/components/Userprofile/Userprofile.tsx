@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchProvider } from "../api";
+import { fetchProvider } from "../../api";
 import "./userprofile.css";
 import { useParams } from "react-router-dom";
 import {
@@ -10,10 +10,12 @@ import {
   Showless,
   Forward,
   Profile,
-} from "../assests";
-import Loader from "./Loader";
+} from "../../assests";
+import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
-import { userModel } from "../Model";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { userModel } from "../../Model";
 
 const Userprofile = () => {
   const [userProfileData, setUserProfileData] = useState<userModel>();
@@ -27,7 +29,9 @@ const Userprofile = () => {
       .then((data: any) => {
         setUserProfileData(data);
       })
-      .catch((ex) => console.error(ex));
+      .catch((error) =>
+        toast.error(error.message || error.response.data.message)
+      );
   }, [id]);
   return (
     <>
@@ -102,7 +106,12 @@ const Userprofile = () => {
                     <h5>{userProfileData.languages.join(", ")}</h5>
                   </div>
                 </div>
-                <button className="bookingbtn">Book with us</button>
+                <button
+                  className="bookingbtn"
+                  onClick={() => toast.warn("This is coming soon...")}
+                >
+                  Book with us
+                </button>
               </div>
             </div>
           </div>
@@ -110,6 +119,7 @@ const Userprofile = () => {
       ) : (
         <Loader />
       )}
+      <ToastContainer />
     </>
   );
 };

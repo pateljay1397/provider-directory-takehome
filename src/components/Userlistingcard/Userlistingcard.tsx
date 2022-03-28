@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Profile } from "../assests";
+import { Profile } from "../../assests";
 import "./userlistingcard.css";
-import { userModel } from "../Model";
+import { userModel } from "../../Model";
 
 const Userlistingcard = (props: { user: userModel }) => {
   const navigate = useNavigate();

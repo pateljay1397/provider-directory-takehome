@@ -1,22 +1,27 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchProviders } from "../api";
-import { Vector } from "../assests";
+import { fetchProviders } from "../../api";
+import { Vector } from "../../assests";
 import "./userlisting.css";
-import Loader from "./Loader";
-import Userlistingcard from "./Userlistingcard";
-import { userModel } from "../Model";
+import Loader from "../Loader/Loader";
+import Userlistingcard from "../Userlistingcard/Userlistingcard";
+import { userModel } from "../../Model";
+import { toast, ToastContainer } from "react-toastify";
 
 const Userlisting = () => {
-  const [userData, setUserData] = useState<[userModel]>();
+  const [userData, setUserData] = useState<[userModel] | []>([]);
 
   useEffect(() => {
     //Fetching all the users data
-    fetchProviders().then((data) => {
-      if (data) {
-        setUserData(data as [userModel]);
-      }
-    });
+    fetchProviders()
+      .then((data) => {
+        if (data) {
+          setUserData(data as [userModel]);
+        }
+      })
+      .catch((error) =>
+        toast.error(error.message || error.response.data.message)
+      );
   }, []);
 
   return (
@@ -43,6 +48,7 @@ const Userlisting = () => {
       ) : (
         <Loader />
       )}
+      <ToastContainer />
     </>
   );
 };

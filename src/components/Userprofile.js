@@ -13,6 +13,7 @@ import {
 } from "../assests";
 import Loader from "./Loader.js";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Userprofile = () => {
   const [userProfileData, setUserProfileData] = useState();
@@ -21,20 +22,17 @@ const Userprofile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    //Fetching data for selected user by userID
     fetchProvider(id)
       .then((data) => {
         setUserProfileData(data);
-        console.log(data);
       })
       .catch((ex) => console.error(ex));
   }, [id]);
   return (
     <>
-      <div className="headerp">
-        <h2>Provider profile</h2>
-      </div>
       {userProfileData ? (
-        <div>
+        <div className="mt-5">
           <div className="topNavigation">
             <div
               className="topnav-btn"
@@ -71,12 +69,12 @@ const Userprofile = () => {
                   >
                     {showMore ? (
                       <div>
-                        {"Show less"} <img src={Showless} alt="showless" />{" "}
+                        {"Show less"} <img src={Showless} alt="showless" />
                       </div>
                     ) : (
                       <div>
-                        {"Show more"}{" "}
-                        <img className="rotate" src={Showless} alt="showmore" />{" "}
+                        {"Show more"}
+                        <img className="rotate" src={Showless} alt="showmore" />
                       </div>
                     )}
                   </div>
@@ -104,7 +102,12 @@ const Userprofile = () => {
                     <h5>{userProfileData.languages.join(", ")}</h5>
                   </div>
                 </div>
-                <button className="bookingbtn">Book with us</button>
+                <button
+                  className="bookingbtn"
+                  onClick={() => toast.warn("This is coming soon...")}
+                >
+                  Book with us
+                </button>
               </div>
             </div>
           </div>
@@ -112,6 +115,7 @@ const Userprofile = () => {
       ) : (
         <Loader />
       )}
+      <ToastContainer />
     </>
   );
 };

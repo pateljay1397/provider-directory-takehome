@@ -7,13 +7,14 @@ import Loader from "./Loader.js";
 import Userlistingcard from "./Userlistingcard";
 
 const Userlisting = () => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
+    //Fetching all the users data
     fetchProviders().then((data) => {
       setUserData(data);
-    }, []);
-  });
+    });
+  }, []);
 
   return (
     <>
@@ -32,7 +33,7 @@ const Userlisting = () => {
       </div>
       {userData ? (
         <div>
-          {userData.map((user, key) => (
+          {userData.map((user) => (
             <Userlistingcard user={user} key={user.id} />
           ))}
         </div>
